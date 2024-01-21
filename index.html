@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-theme="light">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -12,6 +12,25 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="style.css" />
+    <!-- <script>
+      (function () {
+        const userTheme = localStorage.getItem("theme"),
+          darkQuery = window.matchMedia("(prefers-color-scheme: dark)");
+
+        if (userTheme === "dark" || (!userTheme && darkQuery.matches)) {
+          setTheme("dark");
+        }
+
+        darkQuery.addEventListener("change", function (e) {
+          if (!localStorage.getItem("theme"))
+            setTheme(e.matches ? "dark" : "light");
+        });
+
+        function setTheme(newTheme) {
+          document.documentElement.setAttribute("data-theme", newTheme);
+        }
+      });
+    </script> -->
   </head>
   <body>
     <header>
@@ -34,16 +53,22 @@
             />
           </svg>
         </a>
-        <button class="btn-theme">
-          <img src="assets/icon-sunny.svg" alt="light" />
-          <img class="none" src="assets/icon-moon.svg" alt="light" />
+        <!-- <button class="btn-mode-dark">
+          <img src="assets/icon-sunny.svg" alt="dark" />
+        </button>
+        <button class="btn-mode-light">
+          <img src="assets/icon-moon.svg" alt="light" />
+        </button> -->
+        <button class="btn-theme-dark">
+          <img class="btn-light" src="assets/icon-moon.svg" />
+          <img class="btn-dark" src="assets/icon-sunny.svg" />
         </button>
       </div>
     </header>
 
     <div class="menu">
       <nav class="menu-nav">
-        <a href="#inicio">
+        <a href="#inicio" data-scroll-spy>
           <img
             class="menu-home"
             src="assets/btn-light-home.svg"
@@ -51,7 +76,7 @@
             title="Home"
           />
         </a>
-        <a href="#sobreMi">
+        <a href="#sobreMi" data-scroll-spy>
           <img
             class="menu-about"
             src="assets/btn-light-perfil.svg"
@@ -59,7 +84,7 @@
             title="About"
           />
         </a>
-        <a href="#habilidades">
+        <a href="#habilidades" data-scroll-spy>
           <img
             class="menu-skills"
             src="assets/btn-light-habilidades.svg"
@@ -67,7 +92,7 @@
             title="Skills"
           />
         </a>
-        <a href="#proyectos">
+        <a href="#proyectos" data-scroll-spy>
           <img
             class="menu-project"
             src="assets/btn-light-proyectos.svg"
@@ -75,7 +100,7 @@
             title="Porfolio"
           />
         </a>
-        <a href="#contacto">
+        <a href="#contacto" data-scroll-spy>
           <img
             class="menu-contact"
             src="assets/btn-light-contacto.svg"
@@ -146,7 +171,7 @@
     </div>
 
     <main>
-      <section id="inicio" class="home">
+      <section id="inicio" class="home" data-scroll-spy>
         <div class="home-box container">
           <div class="home-info">
             <h1>Fernando Sosa</h1>
@@ -207,7 +232,7 @@
           </div>
         </div>
       </section>
-      <section id="sobreMi" class="about">
+      <section id="sobreMi" class="about" data-scroll-spy>
         <div class="about-box container img">
           <img id="Fernando" src="assets/Fernando.webp" alt="Fernando" />
           <div class="about-text">
@@ -223,7 +248,7 @@
           </div>
         </div>
       </section>
-      <section id="habilidades" class="skills">
+      <section id="habilidades" class="skills" data-scroll-spy>
         <div class="skills-container container">
           <div class="skills-box">
             <h2>Lenguajes</h2>
@@ -263,12 +288,12 @@
           </div>
         </div>
       </section>
-      <section id="proyectos" class="project">
+      <section id="proyectos" class="project" data-scroll-spy>
         <div class="porfolio container">
           <h2>Proyectos</h2>
         </div>
       </section>
-      <section id="contacto" class="contact">
+      <section id="contacto" class="contact" data-scroll-spy>
         <div class="contact-info container">
           <h2>Contacto</h2>
           <h3>Gracias por su visita</h3>
@@ -352,5 +377,8 @@
         <small>Sitio diseñado por <a href="#Fernando">@FernandoSosa</a></small>
       </section>
     </main>
+
+    <script src="index.js" type="module"></script>
+    <!-- <script defer src="./js/themeDark.js"></script> -->
   </body>
 </html>
