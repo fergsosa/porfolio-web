@@ -4,6 +4,8 @@
   --first-alpha-color: #b70603;
   --link-color: #147efb;
   --link-alpha-color: #034ba0;
+  --form-ok-color: #53d769;
+  --form-error-color: #fc3d39;
   --opacity: 0.75;
 
   --text-icon-color: #1d1d1f;
@@ -278,6 +280,7 @@ svg {
 .btn-mode-light,
 .btn-mode-dark {
   display: flex;
+  z-index: 999;
   padding: var(--box-8-9);
   border-radius: 50%;
   background-color: var(--bg-navbar);
@@ -354,28 +357,67 @@ svg {
     box-shadow: var(--box-shadow-s);
 
     .modal-form {
+      width: 100%;
       display: flex;
       flex-direction: column;
       justify-content: center;
-      gap: 1rem;
+      gap: 1.5rem;
       padding: var(--box-16-18);
       margin-top: 32px;
+
+      /* & [required]:valid {
+        border-right: thin solid var(--form-ok-color);
+      }
+      & [required]:invalid {
+        border-right: thin solid var(--form-error-color);
+      } */
+      .contact-form-error {
+        font-size: 12px;
+        text-wrap: pretty;
+        letter-spacing: 0.4px;
+        background-color: var(--red);
+        color: #fd8b88;
+        position: absolute;
+        right: 2rem;
+        border-bottom: 1px solid var(--first-color);
+        border-radius: 0 0 5px 5px;
+        padding: 0.1rem 1rem;
+        margin-left: 2rem;
+        background-color: #1a000090;
+      }
+      .contact-form-error.is-active {
+        display: block;
+        animation: show-message 0.5s normal;
+      }
+      .input-asunto > .contact-form-error {
+        transform: translateY(29px);
+      }
 
       & label {
         display: flex;
         border-bottom: 1px solid var(--bg-navbar);
 
         & svg {
+          min-width: 25px;
           color: #fff8;
+          margin-bottom: 0.2rem;
         }
 
         & input {
+          /* display: flex; */
           width: 100%;
-          padding: var(--box-12-14) var(--box-16-18);
+          padding: 0.5rem 1rem 0.1rem;
           outline: 0;
           border: none;
           background-color: transparent;
           color: #fff;
+        }
+
+        & input[name="asunto"] {
+          padding: 0.5rem 0 0.3rem 0.3rem;
+        }
+        .contact-form-error {
+          transform: translateY(32px);
         }
       }
 
@@ -384,21 +426,66 @@ svg {
         font-size: var(--font-16);
         resize: none;
         padding: var(--box-16-18);
+        padding: 16px;
+        outline: none;
         border: 1px solid #fff1;
         border-radius: var(--box-8-9);
         background-color: #0006;
         color: #fff;
       }
 
-      & button {
+      & input[type="submit"] {
+        font-family: var(--font);
+        font-size: var(--font-16);
         margin-top: var(--box-16-18);
         margin-bottom: var(--box-8-9);
         padding: var(--box-12-14);
+        outline: 0;
+        border: none;
         border-radius: 43px;
         background-color: var(--link-color);
-        box-shadow: 0 0 6px var(--link-color);
         color: #fff;
+        box-shadow: 0 0 6px var(--link-color);
+        cursor: pointer;
       }
+
+      .contact-form-loader {
+        .loader {
+          text-align: center;
+
+          & span {
+            font-weight: bold;
+            color: #f8f9fc;
+          }
+
+          .loading-bar {
+            width: 130px;
+            height: 2px;
+            margin: 0 auto;
+            border-radius: 2px;
+            margin-top: 0.5rem;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            transform: rotateY(0);
+            transition: transform 0.3s ease-in;
+            background-color: #fff;
+
+            .blue-bar {
+              height: 100%;
+              width: 68px;
+              position: absolute;
+              transform: translate(-34px);
+              border-radius: 2px;
+              animation: initial-loading 1.5s ease infinite;
+              background-color: var(--link-color);
+            }
+          }
+        }
+      }
+    }
+    .modal-form > .contact-form-error {
+      transform: translateY(109px);
     }
 
     .modal-cerrar {
@@ -422,10 +509,33 @@ svg {
     }
   }
 }
+@keyframes initial-loading {
+  0% {
+    transform: translateX(-34px);
+  }
+  50% {
+    transform: translateX(96px);
+  }
+  100% {
+    transform: translateX(-34px);
+  }
+}
+@keyframes show-message {
+  0% {
+    visibility: hidden;
+    opacity: 0;
+  }
+  100% {
+    visibility: visible;
+    opacity: 1;
+  }
+}
+
 .modal-form > textarea,
 .modal-form input {
   &::placeholder {
     color: #fff8;
+    font-family: var(--font);
   }
 }
 
@@ -472,7 +582,7 @@ section > div {
 
 header {
   position: absolute;
-  z-index: 999;
+  /* z-index: 999; */
   inset: 0;
   height: 0px;
 
@@ -489,14 +599,20 @@ header {
 }
 
 .menu {
-  position: fixed;
-  bottom: 0.5rem;
+  position: relative;
+  /* bottom: 0.5rem;
   left: 0;
-  right: 0;
-  z-index: 999;
+  right: 0; */
   display: flex;
 
   .menu-nav {
+    z-index: 998;
+    width: max-content;
+    position: fixed;
+    bottom: 0.5rem;
+    left: 0;
+    right: 0;
+    z-index: 998;
     display: flex;
     padding: 4px;
     margin: auto;
@@ -799,9 +915,10 @@ main > section {
 }
 @media screen and (width >= 1024px) {
   .menu {
-    top: 10px;
-    bottom: unset;
-
+    .menu-nav {
+      top: 10px;
+      bottom: unset;
+    }
     .menu-nav img {
       display: none;
     }
