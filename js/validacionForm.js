@@ -4,7 +4,7 @@ export default function contactFormValidations() {
   const $form = d.querySelector(".modal-form"),
     $inputs = d.querySelectorAll(".modal-form [required]");
 
-  console.log($inputs);
+  // console.log($inputs);
 
   $inputs.forEach((input) => {
     const $span = d.createElement("span");
