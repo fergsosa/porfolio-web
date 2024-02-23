@@ -11,6 +11,11 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap"
       rel="stylesheet"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+
     <link rel="stylesheet" href="style.css" />
     <script
       defer
@@ -294,7 +299,7 @@
       </section>
       <section id="sobreMi" class="about" data-scroll-spy>
         <div class="about-box container img">
-          <img id="Fernando" src="assets/Fernando.webp" alt="Fernando" />
+          <img id="Fernando" src="assets/Fernando.png" alt="Fernando" />
           <div class="about-text">
             <h2>Sobre mi</h2>
             <p>
@@ -354,20 +359,40 @@
           <section class="proyecto-page">
             <div class="box-img">
               <div class="box-title">
-                <h4>titulo</h4>
-                <p>Detalles</p>
+                <a
+                  href="https://fergsosa.github.io/Slider-Efectos-Series/"
+                  title="Pagina"
+                  target="_blank"
+                >
+                  Slider Efecto Series
+                </a>
+                <p>Slider automático hecho con HTML, CSS y JS</p>
               </div>
             </div>
             <div class="box-img">
               <div class="box-title">
-                <h4>titulo</h4>
-                <p>Detalles</p>
+                <a
+                  href="https://fergsosa.github.io/Slider-Relojes/"
+                  title="Pagina"
+                  target="_blank"
+                >
+                  Slider smartwatch
+                </a>
+
+                <p>Slider de productos hecho con HTML, CSS y JS</p>
               </div>
             </div>
             <div class="box-img">
               <div class="box-title">
-                <h4>titulo</h4>
-                <p>Detalles</p>
+                <a
+                  href="https://fergsosa.github.io/"
+                  title="Pagina"
+                  target="_blank"
+                >
+                  Carro de compra
+                </a>
+
+                <p>Carga carrito de productos hecho con HTML, CSS y JS</p>
               </div>
             </div>
           </section>
@@ -459,56 +484,20 @@
             <div class="box-apk">
               <div class="item-apk">
                 <div class="to-do-container">
-                  <h3>To Do</h3>
-                  <div class="to-do-form">
-                    <form>
-                      <textarea
-                        id="task"
-                        placeholder="Escriba la tarea"
-                      ></textarea>
-                      <button id="btnAdd">+</button>
-                    </form>
-                  </div>
-                  <ul class="to-do-list">
-                    <li class="complete">
-                      <div class="complete-icon">
-                        <svg
-                          aria-hidden="true"
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 20 20"
-                        >
-                          <path
-                            stroke="currentColor"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
-                            d="m7 10 2 2 4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
-                          />
-                        </svg>
-                      </div>
-                      <div class="content">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Perferendis, magni.
-                      </div>
-                      <div class="close-icon">
-                        <svg
-                          aria-hidden="true"
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 14 14"
-                        >
-                          <path
-                            stroke="currentColor"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
-                            d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
-                          />
-                        </svg>
-                      </div>
-                    </li>
-                  </ul>
+                  <h3>ToDo</h3>
+                  <section class="agregar-tarea">
+                    <input
+                      type="text"
+                      id="input"
+                      placeholder="agregar una tarea"
+                    />
+
+                    <i id="boton-enter" class="fas fa-plus-circle"></i>
+                  </section>
+
+                  <section class="seccion-tarea">
+                    <ul id="lista"></ul>
+                  </section>
                 </div>
               </div>
             </div>
@@ -604,6 +593,7 @@
     </main>
 
     <script src="index.js" type="module"></script>
+    <script src="indexXXXX.js" type="module"></script>
     <script defer src="./js/themeDark.js"></script>
   </body>
 </html>

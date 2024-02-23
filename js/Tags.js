@@ -4,11 +4,11 @@ export default function Tags(tagsUl, tagsInput, btnRemoveAll) {
   const $ul = d.querySelector(tagsUl),
     $input = d.querySelector(tagsInput),
     $deleteAll = d.querySelector(btnRemoveAll);
-  let tags = ["html", "css", "javascript"];
+  let tags = ["html", "css", "js"];
 
-  console.log($ul);
   function showTags() {
     d.querySelectorAll(".tags-input ul li").forEach((li) => li.remove());
+
     tags.forEach((value, key) => {
       let newTag = d.createElement("li");
       newTag.innerText = value;
@@ -21,7 +21,8 @@ export default function Tags(tagsUl, tagsInput, btnRemoveAll) {
   }
 
   function removeTagItem(key) {
-    delete tags[key];
+    // delete tags[key];
+    tags.splice(key, 1); // Utilizar splice para eliminar el elemento del array
     showTags();
   }
   showTags();
@@ -40,4 +41,7 @@ export default function Tags(tagsUl, tagsInput, btnRemoveAll) {
     tags = [];
     showTags();
   });
+
+  // Hacer la función removeTagItem accesible desde fuera de la función Tags
+  window.removeTagItem = removeTagItem;
 }

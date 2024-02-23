@@ -38,8 +38,8 @@ export default function contactFormValidations() {
   });
 
   d.addEventListener("submit", (e) => {
-    // e.preventDefault();
-    alert("Enviando Formularios");
+    e.preventDefault();
+    // alert("Enviando Formularios");
 
     const $loader = d.querySelector(".contact-form-loader"),
       $response = d.querySelector(".contact-form-response");

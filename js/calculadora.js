@@ -14,7 +14,7 @@ export default function calculadora(btn, screenLast, screenNew) {
       let value = button.innerText;
       switch (value) {
         case (value.match(/[0-9]/) || {}).input:
-          // add number in lastNumber
+          // añadir número en lastNumber
           newNumber = newNumber !== null ? newNumber + value : value;
           break;
         case ".":
